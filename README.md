@@ -8,7 +8,7 @@
   <li>Written with kotlin</li>
   <li>Jetpack Compose</li>
   <li>Coroutines</li>
-  <li>DataStore</li>
+  <li>Retrofit</li>
   <li>Hilt</li>
   <li><a href="https://github.com/soruly/trace.moe">Tracer Moe API</a></li>
 </ul>
