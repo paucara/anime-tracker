@@ -5,13 +5,18 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.animetracker.data.AnimeClient
+import com.example.animetracker.data.AnimeService
 import com.example.animetracker.utils.formatterTime
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import okhttp3.RequestBody
 import java.io.IOException
+import javax.inject.Inject
 
-class AnimeViewModel : ViewModel() {
+@HiltViewModel
+class AnimeViewModel @Inject constructor(
+    private val animeService: AnimeService
+) : ViewModel() {
 
     var animeResult: AnimeResult by mutableStateOf(AnimeResult.Loading)
 
@@ -22,7 +27,7 @@ class AnimeViewModel : ViewModel() {
         viewModelScope.launch {
             animeResult = AnimeResult.Loading
             animeResult = try {
-                val response = AnimeClient.animeService.search(request)
+                val response = animeService.search(request)
                 AnimeResult.Success(
                     result = response.result.map {
                         AnimeItem(
