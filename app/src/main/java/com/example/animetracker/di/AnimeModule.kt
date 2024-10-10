@@ -15,7 +15,7 @@ object AnimeModule {
     fun provideApiService(): AnimeService
     {
         return Retrofit.Builder()
-            .baseUrl("https://api.example.com/")
+            .baseUrl("https://api.trace.moe/")
             .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create(AnimeService::class.java)

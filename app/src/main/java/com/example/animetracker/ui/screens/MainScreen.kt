@@ -24,6 +24,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.example.animetracker.utils.readContentUri
@@ -33,7 +34,7 @@ import okhttp3.RequestBody.Companion.toRequestBody
 
 @Composable
 fun MainScreen(
-    viewModel: AnimeViewModel
+    viewModel: AnimeViewModel = hiltViewModel()
 ) {
     Scaffold(
         topBar = { TopBar() }
